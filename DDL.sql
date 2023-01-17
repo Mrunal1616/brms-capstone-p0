@@ -21,7 +21,15 @@ CREATE TABLE Registration(
 );
 
 ALTER TABLE Registration
-ADD COLUMN(age INT) ;
+ADD COLUMN(age INT NULL) ;
 
 #TRUNCATE Registration;
+
+DROP TABLE IF EXISTS Reminders;
+CREATE TABLE Reminders(
+	message_id INT PRIMARY KEY AUTO_INCREMENT,
+    message VARCHAR(400),
+    user_id VARCHAR(200),
+    FOREIGN KEY (user_id) REFERENCES Registration(user_id)
+);
 
